@@ -1,5 +1,6 @@
 [versions]
 agp = "8.10.1"
+androidTools = "31.9.0"
 kotlin = "2.1.21"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -12,6 +13,7 @@ hilt = "2.56.2"
 # Kotlin-ksp
 ksp = "2.1.21-2.0.1"
 kapt = "2.1.21"    # Kapt 版本（通常与 Kotlin 一致）
+truth = "1.4.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -23,11 +25,32 @@ material = { group = "com.google.android.material", name = "material", version.r
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+
+# Dependencies of the included build-logic
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
+compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-lint = { id = "com.android.lint", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt" }
+
+# Plugins defined by this project
+coroutineble-android-application = { id = "coroutineble.android.application" }
+coroutineble-android-application-compose = { id = "coroutineble.android.application.compose" }
+coroutineble-android-application-flavors = { id = "coroutineble.android.application.flavors" }
+coroutineble-android-feature = { id = "coroutineble.android.feature" }
+coroutineble-android-library = { id = "coroutineble.android.library" }
+coroutineble-android-library-compose = { id = "coroutineble.android.library.compose" }
+coroutineble-android-lint = { id = "coroutineble.android.lint" }
+coroutineble-android-test = { id = "coroutineble.android.test" }
+coroutineble-hilt = { id = "coroutineble.hilt" }
+coroutineble-jvm-library = { id = "coroutineble.jvm.library" }
